@@ -36,7 +36,6 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-
 export default defineComponent({
   name: 'HelloWorld',
   props: {
@@ -54,7 +53,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 a {
-  color: #fff;
+  color: $themeColor;
 }
 
 label {
