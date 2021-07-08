@@ -1,24 +1,25 @@
 import {Commit } from 'vuex'
-export interface aboutState {
+
+export interface dashboardState {
   count: number
 }
-const state: aboutState ={
+const state: dashboardState ={
     count:0
 }
 const mutations = {
-  INCREMENT (state:aboutState){
+  INCREMENT:(state:dashboardState)=>{
     state.count++
   }
 }
-
 const actions = {
-  increment(context: { commit: Commit, state: aboutState }){
+  increment(context: { commit: Commit, state: dashboardState }){
     context.commit('INCREMENT')
   }
 }
 
+
 export default {
-  namespace:true,
+  namespaced:true,
   state,
   mutations,
   actions

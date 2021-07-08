@@ -27,7 +27,7 @@
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
   </p>
 
-  <button type="button" @click="count++">count is: {{ count }}</button>
+  <button type="button" @click="increment">count is: {{ dashboardCount }}</button>
   <p>
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
@@ -35,20 +35,30 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { defineComponent, ref, toRef, toRefs } from "vue";
+import {useStore,mapGetters } from "vuex";
 export default defineComponent({
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
     msg: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
+  },
+  mounted() {
+    console.log('store',(this as any).$store)
+  },
+  computed: {
+    ...mapGetters(["dashboardCount"]),
   },
   setup: () => {
-    const count = ref(0)
-    return { count }
-  }
-})
+    const store = useStore()
+    const increment = ()=>{
+      store.dispatch('increment')
+    }
+    return {increment};
+  },
+});
 </script>
 
 <style lang="scss" scoped>
